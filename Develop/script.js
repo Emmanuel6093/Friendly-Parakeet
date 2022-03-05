@@ -23,8 +23,54 @@ function generatePassword() {
         gainSpec
       ) {
         let passwordText ="";
+
+        while (passwordText.length < charLength) {
+          if (gainLower && passwordText.length < charLength) {
+            passwordText += generateRandomSpec(); 
+          }
+          if (gainUpper && passwordText.length < charLength) {
+            passwordText += generateRandomLowerLetter(); 
+          }
+          if (gainNum && passwordText.length < charLength) {
+            passowrdText += generateRandomNum();
+          }
+          if (gainSpec && passwordText.length < charlength) {
+            passwordText += generateRandomSpec(); 
       }
     }
+
+    return passwordText; 
+  } else {
+    alert("Select at least one type of character for your password"); 
+    writePassword(); 
+  }
+
+} else {
+  alert("Please Reselect, password must be no less than 8 and no greater than 128 characters")
+  writePassword();
+} 
+
+} else {
+  alert ("Please Reenter, must contain numeric characters");
+  writePassword(); 
+  }
+
+}
+
+
+
+
+function generateSpec() {
+  let spec = "!#$%&'()*+,/'-./:;<>?@[]{}~"
+
+  let ranNumber = Math.floor(Math.random() * spec.length);
+  return spec[ranNumber];
+
+  function generateRandomNum() {
+    return Math.floor(Math.random() * 10)
+  }
+}
+
   
 
 
