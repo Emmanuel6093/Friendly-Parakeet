@@ -7,13 +7,13 @@ function generatePassword() {
     charLength = (Number(charLength));
     if (charLength >= 8 && charLength <= 128) {
       
-      let gainLower = confirm("Click Ok to confirm to include lowercase characters");
+      let gainLower = confirm ("Click Ok to confirm to include lowercase characters");
 
-      let gainUpper = confirm ("Click Ok to include lowercase letters?")
+      let gainUpper = confirm ("Click Ok to include lowercase letters?");
 
       let gainNum = confirm ("Click Ok to include numeric characters");
 
-      let gainSpec = confirm("Click Ok to include special characters"); 
+      let gainSpec = confirm ("Click Ok to include special characters"); 
 
 
       if (
@@ -26,15 +26,15 @@ function generatePassword() {
 
         while (passwordText.length < charLength) {
           if (gainLower && passwordText.length < charLength) {
-            passwordText += generateRandomSpec(); 
-          }
-          if (gainUpper && passwordText.length < charLength) {
             passwordText += generateRandomLowerLetter(); 
           }
-          if (gainNum && passwordText.length < charLength) {
-            passowrdText += generateRandomNum();
+          if (gainUpper && passwordText.length < charLength) {
+            passwordText += generateRandomUpperLetter(); 
           }
-          if (gainSpec && passwordText.length < charlength) {
+          if (gainNum && passwordText.length < charLength) {
+            passwordText += generateRandomNum();
+          }
+          if (gainSpec && passwordText.length < charLength) {
             passwordText += generateRandomSpec(); 
       }
     }
@@ -61,15 +61,26 @@ function generatePassword() {
 
 
 function generateSpec() {
-  let spec = "!#$%&'()*+,/'-./:;<>?@[]{}~"
+  let spec = "!#$%&'()*+,/'-./:;<>?@[]{}~";
 
   let ranNumber = Math.floor(Math.random() * spec.length);
   return spec[ranNumber];
 
   function generateRandomNum() {
-    return Math.floor(Math.random() * 10)
+    return Math.floor(Math.random() * 10);
   }
-}
+
+  let letters = "abcdefghijklmnopqrstuvwxyz"; 
+  function generateRandomLowerLetter() {
+    let ranNumber = Math.floor(Math.random() * letters.length);
+    return letters[ranNumber]; 
+  }
+
+  function generateRandomUpperLetter() {
+    let upper = letters.toUpperCase();
+    let ranNumber = Math.floor(Math.random() * upper.length);
+  } 
+
 
   
 
@@ -90,5 +101,8 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-}
+generateBtn.addEventListener("click", function (){
+  let password = generatePassword(); 
+
+  document.querySelector("#password") = password; 
+});
