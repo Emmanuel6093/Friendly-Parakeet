@@ -60,7 +60,7 @@ function generatePassword() {
 
 
 
-function generateSpec() {
+function generateRandomSpec() {
   let spec = "!#$%&'()*+,/'-./:;<>?@[]{}~";
  
 
@@ -93,7 +93,7 @@ function generateSpec() {
 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 
@@ -103,5 +103,4 @@ generateBtn.addEventListener("click", function () {
   let password = generatePassword(); 
 
   document.querySelector("#password").innerHTML= password; 
-  console.log(password); 
 });
