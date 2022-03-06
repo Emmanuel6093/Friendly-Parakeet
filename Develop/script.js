@@ -9,7 +9,7 @@ function generatePassword() {
       
       let gainLower = confirm ("Click Ok to confirm to include lowercase characters");
 
-      let gainUpper = confirm ("Click Ok to include lowercase letters?");
+      let gainUpper = confirm ("Click Ok to include lowercase letters");
 
       let gainNum = confirm ("Click Ok to include numeric characters");
 
@@ -46,12 +46,12 @@ function generatePassword() {
   }
 
 } else {
-  alert("Please Reselect, password must be no less than 8 and no greater than 128 characters")
+  alert("Please Re-select, password must be no less than 8 and no greater than 128 characters")
   writePassword();
 } 
 
 } else {
-  alert ("Please Reenter, must contain numeric characters");
+  alert ("Please Re-enter, must contain numeric characters");
   writePassword(); 
   }
 
@@ -62,9 +62,12 @@ function generatePassword() {
 
 function generateSpec() {
   let spec = "!#$%&'()*+,/'-./:;<>?@[]{}~";
+ 
 
   let ranNumber = Math.floor(Math.random() * spec.length);
   return spec[ranNumber];
+
+}
 
   function generateRandomNum() {
     return Math.floor(Math.random() * 10);
@@ -79,6 +82,7 @@ function generateSpec() {
   function generateRandomUpperLetter() {
     let upper = letters.toUpperCase();
     let ranNumber = Math.floor(Math.random() * upper.length);
+    return upper[ranNumber];
   } 
 
 
@@ -92,17 +96,12 @@ function generateSpec() {
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", function (){
+generateBtn.addEventListener("click", function () {
   let password = generatePassword(); 
 
-  document.querySelector("#password") = password; 
+  document.querySelector("#password").innerHTML= password; 
+  console.log(password); 
 });
