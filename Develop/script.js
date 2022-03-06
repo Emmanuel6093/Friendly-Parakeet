@@ -9,7 +9,7 @@ function generatePassword() {
       
       let gainLower = confirm ("Click Ok to confirm to include lowercase characters");
 
-      let gainUpper = confirm ("Click Ok to include lowercase letters");
+      let gainUpper = confirm ("Click Ok to include uppercase letters");
 
       let gainNum = confirm ("Click Ok to include numeric characters");
 
@@ -25,6 +25,7 @@ function generatePassword() {
         let passwordText ="";
 
         while (passwordText.length < charLength) {
+          
           if (gainLower && passwordText.length < charLength) {
             passwordText += generateRandomLowerLetter(); 
           }
@@ -46,7 +47,7 @@ function generatePassword() {
   }
 
 } else {
-  alert("Please Re-select, password must be no less than 8 and no greater than 128 characters")
+  alert("Please Re-select, password must be no less than 8 and no greater than 128 characters");
   writePassword();
 } 
 
@@ -103,4 +104,5 @@ generateBtn.addEventListener("click", function () {
   let password = generatePassword(); 
 
   document.querySelector("#password").innerHTML= password; 
+  
 });
